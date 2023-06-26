@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+
+    <h1>To do list!</h1>
+
+    <a href="/create">create</a>
+
+    <% if (todoList.length === 0) { %>
+
+        <h5>No to dos registered</h5>
+    <% } else { %>
+        <% todoList.map(todo => { %>
+            <p><%= todo.todo %></p>
+            <form action="/api/delete" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= todo.id %>">
+                <button type="submit">Delete</button>
+            </form>
+            <form action="/api/edit" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<%= todo.id %>">
+                <input type="text" name="editedTask" placeholder="Edit task" required>
+                <button type="submit">Edit</button>
+            </form>
+            <hr />
+        <% }) %>
+        
+    <% } %>
+
+    </body>
+</html>
