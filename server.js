@@ -10,7 +10,7 @@ const PORT =  3000;
 server.set('view engine', 'ejs');
 server.set('views', './src/views');
 
-server.use(express.static("assets"));git init
+server.use(express.static("assets"));
 
 server.use(bodyParser.urlencoded({ extended: false }))
 
@@ -21,7 +21,7 @@ let id = 0;
 
 // create a home route and send a simple message
 server.get("/", (req, res) => {
-    res.render('index', { todoList : todoList})
+    res.render('index', { todoList : todoList, page_name: "index"})
 })
 
 // create a get route to read api data
@@ -31,7 +31,7 @@ server.get('/api/todoList', (req, res) => {
 
 // create a get route to render the register page
 server.get("/create", (req, res) => {
-    res.render('create', { todoList: todoList})
+    res.render('create', { todoList: todoList, page_name: "create"})
 })
 
 server.post("/api/create", (req, res) => {
@@ -45,7 +45,6 @@ server.post("/api/create", (req, res) => {
 
 server.post('/api/delete', (req, res) => {
     let id = req.body.id;
-    console.log(id)
     todoList.splice((id - 1), 1);
     res.redirect('/');
 });
@@ -53,7 +52,7 @@ server.post('/api/delete', (req, res) => {
 server.post('/api/edit', (req, res) => {
     let id = req.body.id;
     let editedTodo = req.body.editedTodo;
-    todoList[id] = editedTodo;
+    todoList[id - 1].todo = editedTodo;
     res.redirect('/');
 });
 

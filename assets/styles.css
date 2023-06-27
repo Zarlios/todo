@@ -68,7 +68,7 @@ body {
   padding: 0px 5em;
 }
 
-.container-content .img-title {
+.container-content .title {
   display: flex;
   flex-direction: column;
   align-items: center;

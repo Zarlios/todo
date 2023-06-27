@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
-<div>
-    <h1>Add to your Todo List</h1>
+<%- include('partials/header'); %>
+<div class="container-content">
+  <h1>Add to your Todo List</h1>
 
-    <form method="post" action="/api/create">
-        <label for="todo">Todo</label>
-        <input placeholder="What to do?" name="todo" type="text">
-        <button type="submit">SUBMIT</button>
-    </form>
-    </div>    
-        
+  <form method="post" action="/api/create">
+    <label for="todo">Todo</label>
+    <input placeholder="What to do?" name="todo" type="text" />
+    <button type="submit">SUBMIT</button>
+  </form>
+</div>
+<%- include('partials/footer'); %>
